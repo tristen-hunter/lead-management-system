@@ -1,28 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Add Lead</title>
+    <meta charset="UTF-8">
+    <title>VoiceAI Demo</title>
+    <link rel="stylesheet" href="/assets/style.css">
 </head>
+
 <body>
-    <h1>Add a New Lead</h1>
 
-    <form action="submit-lead.php" method="POST">
-        <label>First Name:</label>
-        <input type="text" name="first_name"><br><br>
+<nav class="navbar">
+    <div class="container">
 
-        <label>Last Name:</label>
-        <input type="text" name="last_name"><br><br>
+        <div class="navbar-brand">
+            VoiceAI
+        </div>
 
-        <label>Phone Number:</label>
-        <input type="text" name="phone_number"><br><br>
+        <div class="navbar-links">
+            <a href="#">Platform</a>
+            <a href="#">Solutions</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
 
-        <label>Email:</label>
-        <input type="text" name="email"><br><br>
+    </div>
+</nav>
 
-        <label>Notes:</label>
-        <textarea name="notes"></textarea><br><br>
+<main>
+    <div class="container">
 
-        <button type="submit">Submit</button>
-    </form>
+        <?php if (isset($_GET['success'])): ?>
+            <p>Lead submitted successfully!</p>
+        <?php endif; ?>
+
+        <section class="hero">
+            <h1>Try Our AI Voice Agent</h1>
+
+            <p>
+                Experience a custom voice agent designed to speak with
+                your customers, answer questions, and handle conversations.
+            </p>
+
+            <a href="lead-form.php">
+                <button class="btn btn-primary">Call Me</button>
+            </a>
+        </section>
+
+    </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 VoiceAI. All rights reserved.</p>
+
+    <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
