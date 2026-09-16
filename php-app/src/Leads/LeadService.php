@@ -16,12 +16,21 @@ class LeadService
     */
     public function captureLead(array $formData): string
     {
-        return $this->repository->create(
-            $formData['first_name'],
-            $formData['last_name'],
-            $formData['phone_number'],
-            $formData['email'],
-            $formData['notes'] ?? null,
-        );
+        $firstName = trim($formData['first_name'] ?? '');
+        $lastName = trim($formData['last_name'] ?? '');
+        $phoneNumber = trim($formData['phone_number'] ?? '');
+        $email = trim($formData['email'] ?? '');
+        $notes = trim($formData['notes'] ?? '') ?: null;
+
+        if ($firstName === '' || $lastName === '' || $phoneNumber === '' || $email === '') {
+            throw new \InvalidArgumentException('All fields, except notes, are required.');
+        }
+
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new \InvalidArgumentException('Please enter a valid email address.');
+        }
+
+        return $this->repository->create($firstName, $lastName, $phoneNumber, $email);
+
     }
 }
