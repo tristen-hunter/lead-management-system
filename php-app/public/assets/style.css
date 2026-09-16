@@ -1,0 +1,169 @@
+/* Colors */
+:root {
+    --primary: #172033;
+    --accent: #3b82f6;
+    --background: #f7f8fa;
+    --white: #ffffff;
+    --text: #172033;
+    --muted: #667085;
+}
+
+/* Global */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Layout */
+.container {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--white);
+    padding: 20px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 30px;
+    color: var(--muted);
+}
+
+.navbar-links a:hover {
+    color: var(--text);
+}
+
+/* Hero */
+.hero {
+    text-align: center;
+    padding: 140px 200px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin: 0 0 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin: 0 0 30px;
+}
+
+/* Button */
+.btn {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 25px 0;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer p {
+    margin: 0;
+    color: #cbd5e1;
+}
+
+.footer-links {
+    display: flex;
+    gap: 25px;
+}
+
+.footer-links a {
+    color: #cbd5e1;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+.lead-form {
+    width: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.lead-form h1 {
+    margin-bottom: 25px;
+}
+
+.lead-form label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.lead-form input,
+.lead-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.lead-form textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-error {
+    color: red;
+    margin-bottom: 20px;
+}
