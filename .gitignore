@@ -1,0 +1,47 @@
+# --- Environment / secrets ---
+.env
+.env.local
+*.env
+!.env.example
+
+# --- PHP / Composer ---
+php-app/vendor/
+php-app/composer.lock
+
+# --- Node / npm ---
+node_modules/
+express-service/node_modules/
+qa/node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json.bak
+
+# --- Playwright ---
+qa/test-results/
+qa/playwright-report/
+qa/.cache/
+
+# --- Docker ---
+*.pid
+docker-compose.override.yml
+
+# --- MySQL data (if using a bind mount instead of a named volume) ---
+db/data/
+
+# --- Logs ---
+*.log
+logs/
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Editor / IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Misc ---
+*.tmp
+*.bak

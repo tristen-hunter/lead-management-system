@@ -1,0 +1,12 @@
+{
+    "name": "tristen/php-app",
+    "description": "PHP backend for lead management",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Tristen\\PhpApp\\": "src/"
+        }
+    },
+    "require": {}
+}
