@@ -33,4 +33,11 @@ class LeadService
         return $this->repository->create($firstName, $lastName, $phoneNumber, $email);
 
     }
+    public function fetchAllLeads(): array
+    {
+        $leads = $this->repository->fetchAll();
+
+        return $leads;
+    }
+
 }
