@@ -51,27 +51,49 @@ $leads = $service->fetchAllLeads(); // return array (not JSON)
 
                     <?php else: ?>
 
-                        <?php foreach ($leads as $lead): ?>
-                            <div class="lead-card">
-                                <div class="lead-card-name">
-                                    <?= htmlspecialchars($lead['first_name']) ?>
-                                </div>
-                                <div class="lead-card-name">
-                                    <?= htmlspecialchars($lead['last_name']) ?>
-                                </div>
-                                <div class="lead-card-meta">
-                                    <?= htmlspecialchars($lead['phone_number']) ?>
-                                </div>
-                                <div class="lead-card-meta">
-                                    <?= htmlspecialchars($lead['email'] ?? '') ?>
-                                </div>
-                                <div class="lead-card-footer">
-                                    <button class="btn-call" data-lead-id="<?= (int) $lead['id'] ?>">
-                                        Setup Call
-                                    </button>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
+                      <?php foreach ($leads as $lead): ?>
+                          <div class="lead-card">
+                              <div class="lead-card-main">
+                                  <div class="lead-card-name">
+                                      <?= htmlspecialchars($lead['first_name'] . ' ' . $lead['last_name']) ?>
+                                  </div>
+                                  <div class="lead-card-id">
+                                      ID: <?= htmlspecialchars($lead['id']) ?>
+                                  </div>
+
+                                  <div class="lead-card-details">
+                                      <div class="lead-card-detail">
+                                          <span class="lead-card-detail-label">Phone</span>
+                                          <span class="lead-card-detail-value">
+                                              <?= htmlspecialchars($lead['phone_number']) ?>
+                                          </span>
+                                      </div>
+
+                                      <div class="lead-card-detail">
+                                          <span class="lead-card-detail-label">Email</span>
+                                          <span class="lead-card-detail-value">
+                                              <?= htmlspecialchars($lead['email']) ?>
+                                          </span>
+                                      </div>
+
+                                      <div class="lead-card-detail">
+                                          <span class="lead-card-detail-label">Captured</span>
+                                          <span class="lead-card-detail-value">
+                                              <?= htmlspecialchars(
+                                                  date('d M Y, H:i', strtotime($lead['created_at'])),
+                                              ) ?>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="lead-card-footer">
+                                  <button class="btn-call" data-lead-id="<?= htmlspecialchars($lead['id']) ?>">
+                                      Start Call
+                                  </button>
+                              </div>
+                          </div>
+                      <?php endforeach; ?>
 
                     <?php endif; ?>
 
