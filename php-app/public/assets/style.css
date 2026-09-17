@@ -293,20 +293,69 @@ a {
 }
 
 /* Lead cards */
+/* Lead list - full width rows instead of grid */
 .leads-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
 }
 
 .lead-card {
     background: var(--white);
     border-radius: 8px;
-    padding: 20px;
+    padding: 20px 24px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.lead-card-main {
+    display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
+    flex: 1;
+}
+
+.lead-card-name {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.lead-card-id {
+    font-size: 12px;
+    color: var(--muted);
+    font-family: monospace;
+}
+
+.lead-card-details {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.lead-card-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.lead-card-detail-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+}
+
+.lead-card-detail-value {
+    font-size: 14px;
+    color: var(--text);
+}
+
+.lead-card-footer {
+    margin-top: 0;
+    flex-shrink: 0;
 }
 
 .lead-card-name {
