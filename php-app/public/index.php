@@ -5,7 +5,6 @@
     <title>VoiceAI Demo</title>
     <link rel="stylesheet" href="/assets/style.css">
 </head>
-
 <body>
 
 <nav class="navbar">
@@ -19,7 +18,12 @@
             <a href="#">Platform</a>
             <a href="#">Solutions</a>
             <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="lead-form.php">Contact</a>
+            <a href='login-form.php'>
+              <button class='btn btn-primary'>
+                Login
+              </button>
+            </a>
         </div>
 
     </div>
@@ -29,7 +33,17 @@
     <div class="container">
 
         <?php if (isset($_GET['success'])): ?>
-            <p>Lead submitted successfully!</p>
+          <div class="toast">
+            <span>
+              Submitted successfully! Our Voice AI will call you now.
+            </span>
+            <button 
+              class="toast-close" 
+              onclick="this.parentElement.remove()"
+            >
+              ×
+            </button>
+          </div>        
         <?php endif; ?>
 
         <section class="hero">

@@ -18,17 +18,23 @@
             <a href="#">Platform</a>
             <a href="#">Solutions</a>
             <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="lead-form.php">Contact</a>
+            <a href='login-form.php'>
+              <button class='btn btn-primary'>
+                Login
+              </button>
+            </a>
         </div>
 
     </div>
 </nav>
 
+
 <main>
     <div class="container">
 
         <div class="lead-form">
-            <h1>Enter You Info Te Get A Call</h1>
+            <h1>Enter Your Info To Get A Call</h1>
 
             <?php if (isset($_GET['error'])): ?>
                 <p class="form-error">
