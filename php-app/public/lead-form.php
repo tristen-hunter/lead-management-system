@@ -42,7 +42,7 @@
                 </p>
             <?php endif; ?>
 
-            <form action="submit-lead.php" method="POST">
+            <form action="lead-submit.php" method="POST">
 
                 <label>First Name:</label>
                 <input type="text" name="first_name">
