@@ -45,3 +45,4 @@ Thumbs.db
 # --- Misc ---
 *.tmp
 *.bak
+node_modules/
