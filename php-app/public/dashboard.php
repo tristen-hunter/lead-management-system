@@ -107,20 +107,31 @@ $leads = $service->fetchAllLeads(); // return array (not JSON)
       document.querySelectorAll(".btn-call").forEach(button => {
         button.addEventListener("click", async () => {
           const leadId = button.dataset.leadId;
+          console.log("Calling lead:", leadId);
 
-          console.log("Calling Lead: ", leadId);
+          button.disabled = true;
+          button.textContent = "Calling...";
 
-          const response = await fetch("lead-request-call.php", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: new URLSearchParams({
-              leadId: leadId
-            })
-          });
+          try {
+            const response = await fetch("lead-request-call.php", {
+              method: "POST",
+              headers: { "Content-Type": "application/x-www-form-urlencoded" },
+              body: new URLSearchParams({ leadId })
+            });
 
-          console.log("Response status: ", response.status);
+            const result = await response.json(); // read the body ONCE
+            console.log("Response status:", response.status);
+            console.log("Response body:", result);
+
+            if (!response.ok) throw new Error(result.error || "Request failed");
+
+            button.textContent = "Call started ✓";
+          } catch (err) {
+            console.error(err);
+            alert(err.message);
+            button.textContent = "Start Call";
+            button.disabled = false;
+          }
         });
       });
     </script>

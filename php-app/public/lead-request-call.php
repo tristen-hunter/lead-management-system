@@ -4,23 +4,25 @@ require __DIR__ . '/../vendor/autoload.php';
 
 use App\Leads\LeadService;
 
-$service = new LeadService();
+header('Content-Type: application/json');
 
 $leadId = $_POST['leadId'] ?? null;
 
 if (!$leadId) {
-    header('Location: dashboard.php?error=Missing lead ID');
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing lead ID']);
     exit;
 }
 
 try {
-    $service->requestCall($leadId);
-
-    header('Location: dashboard.php');
-    exit;
+    $service = new LeadService();
+    $result  = $service->requestCall($leadId);
+    echo json_encode(['ok' => true, 'express' => $result]);
 } catch (\InvalidArgumentException $e) {
-    $errorMessage = urlencode($e->getMessage());
-
-    header("Location: dashboard.php?error=$errorMessage");
-    exit;
+    http_response_code(400);
+    echo json_encode(['error' => $e->getMessage()]);
+} catch (\Throwable $e) {
+    error_log($e->getMessage());
+    http_response_code(500);
+    echo json_encode(['error' => $e->getMessage()]);
 }
