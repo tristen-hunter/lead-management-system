@@ -2,13 +2,17 @@
 
 namespace App\Leads;
 
+use App\Integrations\ExpressClient;
+
 class LeadService
 {
     private LeadRepository $repository;
+    private ExpressClient $express;
 
     public function __construct()
     {
         $this->repository = new LeadRepository();
+        $this->express = new ExpressClient();
     }
 
     /**
@@ -38,6 +42,21 @@ class LeadService
         $leads = $this->repository->fetchAll();
 
         return $leads;
+    }
+
+    public function requestCall(string $leadId): bool
+    {
+        $lead = $this->repository->fetchById($leadId);
+
+        if (!$lead) {
+            throw new \InvalidArgumentException('Lead not found');
+        }
+
+        return $this->express->requestCall(
+            $leadId,
+            $lead['phoneNumber'],
+        );
+
     }
 
 }

@@ -49,4 +49,14 @@ class LeadRepository
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function fetchById(string $leadId): array|false
+    {
+        $sql = "SELECT * FROM leads WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute(['id' => $leadId]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
 }
