@@ -34,7 +34,7 @@ class LeadService
             throw new \InvalidArgumentException('Please enter a valid email address.');
         }
 
-        return $this->repository->create($firstName, $lastName, $phoneNumber, $email);
+        return $this->repository->create($firstName, $lastName, $phoneNumber, $email, $notes);
 
     }
     public function fetchAllLeads(): array
@@ -44,7 +44,7 @@ class LeadService
         return $leads;
     }
 
-    public function requestCall(string $leadId): bool
+    public function requestCall(string $leadId): array
     {
         $lead = $this->repository->fetchById($leadId);
 
@@ -54,7 +54,7 @@ class LeadService
 
         return $this->express->requestCall(
             $leadId,
-            $lead['phoneNumber'],
+            $lead['phone_number'],
         );
 
     }
