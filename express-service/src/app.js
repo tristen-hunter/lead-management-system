@@ -10,4 +10,15 @@ app.get("/", (req, res) => {
   });
 });
 
+app.post("/calls", (req, res) => {
+  console.log("=== EXPRESS RECEIVED REQUEST ===");
+  console.log("Request body:");
+  console.log(req.body);
+
+  res.json({
+    message: "Express received the request",
+    received: req.body
+  });
+});
+
 module.exports = app;
