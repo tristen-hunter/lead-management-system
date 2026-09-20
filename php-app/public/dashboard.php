@@ -103,5 +103,27 @@ $leads = $service->fetchAllLeads(); // return array (not JSON)
         </div>
     </div>
 
+    <script>
+      document.querySelectorAll(".btn-call").forEach(button => {
+        button.addEventListener("click", async () => {
+          const leadId = button.dataset.leadId;
+
+          console.log("Calling Lead: ", leadId);
+
+          const response = await fetch("lead-request-call.php", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: new URLSearchParams({
+              leadId: leadId
+            })
+          });
+
+          console.log("Response status: ", response.status);
+        });
+      });
+    </script>
+
 </body>
 </html>
